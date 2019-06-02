@@ -1,0 +1,45 @@
+.g-events {
+  &__wrapper {
+    margin-top: 20px;
+  }
+  &-item {
+    margin-bottom: 20px;
+    &__img {
+      width: 100%;
+      height: 250px;
+    }
+  }
+  &__near {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    margin-top: 25px;
+    &-item {
+      font-size: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: #F5F5F5;
+      border-radius: 70px;
+      padding: 8px 20px;
+      transition: background .3s ease, color .3s ease;
+      &_close {
+        padding: 8px;
+        align-self: flex-end;
+      }
+      &_active {
+        color: #fff;
+        background: #00A8C5;
+        transition: background .3s ease, color .3s ease;
+      }
+      &:not(:last-of-type) {
+        margin-right: 8px;
+      }
+      &:nth-of-type(3) {
+
+      }
+    }
+  }
+}

@@ -1,0 +1,166 @@
+.g-layout {
+  position: absolute;
+  &:nth-of-type(4) {
+    .g-layout-item {
+      transform: scaleX(-1);
+      span {
+        transform: scaleX(-1);
+      }
+    }
+  }
+  &_filled {
+    z-index: 54;
+    .g-layout-item__stole {
+      background: #b6e884;
+      color: #fff;
+      transition: background .3s ease, color .3s ease;
+    }
+  }
+  &-item {
+    display: flex;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-transform: translate3d(0,0,0) translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+    transform: translate3d(0,0,0) translateZ(0);
+    // спец блоки
+    &__spec {
+      background: #fff;
+      box-shadow: 0 3px 15px rgba(#000, .1);
+      text-transform: uppercase;
+      &_exit {
+        pointer-events: none;
+        padding: 10px 30px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+      &_date {
+        width: 135px;
+        border-radius: 10px;
+        border: 2px solid #49bda3;
+        pointer-events: all;
+        padding: 10px 20px;
+
+        text-align: center;
+        label {
+          display: block;
+          margin: 0 auto;
+          text-align: center;
+        }
+      }
+      &_bar {
+        letter-spacing: 2px;
+        writing-mode: tb-rl;
+        padding: 50px 20px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
+      &_staircase {
+        padding: 10px 20px;
+        border-top: 2px solid rgba(#000, .2);
+        border-bottom: 2px solid rgba(#000, .2);
+        background-image: repeating-linear-gradient(90deg,
+                transparent,
+                transparent 10px,
+                rgba(#000, .2) 10px,
+                rgba(#000, .2) 12px);
+        box-shadow: 0 0 0 transparent;
+        background-position: -72px 0;
+        span {
+          background: #fff;
+        }
+      }
+    }
+    &_small {
+      align-items: center;
+    }
+
+    &_small, &__center_chairs {
+      .g-layout-item__chair {
+        border-radius: 35px 10px 10px 35px;
+        &_right {
+          transform: scaleX(-1);
+        }
+      }
+    }
+
+    &_big {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__chair {
+      height: 30px;
+      width: 15px;
+      background: #D7E5F6;
+    }
+
+    // Флексирование
+    &__up, &__center, &__bottom {
+      display: flex;
+      align-items: center;
+    }
+    &__up, &__bottom {
+      width: 100px;
+      margin-left: 20px;
+      justify-content: space-between;
+      .g-layout-item__chair {
+        width: 25px;
+        height: 15px;
+        border-radius: 35px 35px 10px 10px;
+        &_center {
+          margin: 0 auto;
+        }
+      }
+    }
+    &__line {
+      &_small {
+        width: 70px;
+      }
+      &_medium {
+        width: 80px;
+        margin-left: 30px;
+      }
+    }
+    &__bottom {
+      .g-layout-item__chair {
+        transform: scaleY(-1)
+      }
+    }
+
+    &__stole {
+      background: #fff;
+      border-radius: 5px;
+      padding: 5px;
+      box-shadow: 0 3px 15px rgba(#000, .1);
+      transition: background .3s ease, color .3s ease;
+      // маленький стол
+      &_small {
+        width: 60px;
+        height: 60px;
+        margin: 0 5px;
+      }
+      // большой стол
+      &_big {
+        width: 100px;
+        height: 60px;
+        margin: 5px;
+      }
+
+      // Статусы столово
+
+      // свободный
+      &_free, &_sold {
+        border-left-width: 8px;
+        border-left-style: solid;
+      }
+      &_free {
+        border-left-color: #B6E884;
+      }
+      &_sold {
+        border-left-color: #00a8c5;
+      }
+    }
+  }
+}

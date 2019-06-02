@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Vue & PWA app</title>
+	<!-- Links -->
+	<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+	<link rel="preload" href="https://fonts.googleapis.com/css?family=Oswald:400,700&amp;subset=cyrillic&amp;display=swap" as="fetch" crossorigin="anonymous">
+	<% htmlWebpackPlugin.files.js.forEach(function(item) { %>
+		<link rel="preload" as="script" href="<%= item %>">
+		<link rel="prefetch" as="script" href="<%= item %>">
+	<% }) %>
+	<% htmlWebpackPlugin.files.css.forEach(function(item) { %>
+		<link rel="preload" as="script" href="<%= item %>">
+		<link rel="prefetch" as="script" href="<%= item %>">
+	<% }) %>
+	<link href="https://fonts.googleapis.com/css?family=Oswald:400,700&amp;subset=cyrillic&amp;display=swap" rel="stylesheet">
+	<link rel="manifest" href="./manifest.json">
+	<link rel="cannonical" href="https://kenan.agency/booking/">
+	<link rel="dns-prefetch" href="https://kenan.agency/booking/">
+
+	<!-- Meta tags -->
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="image" content="">
+	<meta http-equiv="x-dns-prefetch-control" content="on">
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<!-- Schema.org -->
+	<meta itemprop="name" content="">
+	<meta itemprop="description" content="">
+	<meta itemprop="image" content="">
+	<!-- Twitter -->
+	<meta name="twitter:card" content="">
+	<meta name="twitter:title" content="">
+	<meta name="twitter:description" content="">
+	<!-- Facebook, Google+, Pinterest -->
+	<meta name="og:title" content="">
+	<meta name="og:description" content="">
+	<meta name="og:image" content="">
+	<meta name="og:url" content="">
+	<meta name="og:site_name" content="">
+	<meta name="og:locale" content="ru_RU">
+	<meta name="og:type" content="website">
+	<!-- Other meta-tags -->
+	<meta name="theme-color" content="#49bda3">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="cache-control" content="">
+	<meta property="og:locale" content="ru_RU">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:url" content="">
+	<meta property="og:site_name" content="">
+	<!--  Favicon & PWA icons -->
+	<link rel="shortcut icon" type="image/x-icon" href="">
+	<link rel="icon" type="image/png" sizes="192x192" href="">
+	<link rel="icon" type="image/png" sizes="96x96" href="">
+	<link rel="icon" type="image/png" sizes="16x16" href="">
+	<link rel="apple-touch-icon" sizes="57x57" href="">
+	<link rel="apple-touch-icon" sizes="60x60" href="">
+	<link rel="apple-touch-icon" sizes="72x72" href="">
+	<link rel="apple-touch-icon" sizes="76x76" href="">
+	<link rel="apple-touch-icon" sizes="114x114" href="">
+	<link rel="apple-touch-icon" sizes="120x120" href="">
+	<link rel="apple-touch-icon" sizes="144x144" href="">
+	<link rel="apple-touch-icon" sizes="152x152" href="">
+	<link rel="apple-touch-icon" sizes="180x180" href="">
+</head>
+
+<body>
+	<noscript>
+		<div class="g-js">
+			Извините, но данный сайт не может работать без JavaScript
+			<a href="https://help.rambler.ru/common/1205/?p=mail">Узнать, как включить JavaScript в браузере</a>
+		</div>
+	</noscript>
+	<main id="app"></main>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA06pmcqnjhD8kDemCb63MdoF3TzZBpN3Y&libraries=places,geometry&sensor=false"></script>
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('service-worker.js').then(function (reg) {
+				console.log('Работает')
+			}).catch(function (err) {
+				console.log('Херня произошла', err)
+			})
+		}
+	</script>
+	<!-- delete upper line for remove PWA in your page & delete sw.js and sw-toolbox.js -->
+
+</body>
+
+</html>

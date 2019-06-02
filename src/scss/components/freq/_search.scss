@@ -1,0 +1,25 @@
+.g-search {
+  position: relative;
+  padding: 0 15px;
+  margin-top: -28px;
+  input {
+    width: 100%;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 14px;
+    border: 1px solid #dddd;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+
+  }
+  button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 40px;
+    width: 15px;
+    height: 15px;
+    opacity: .4;
+    border: none;
+    background: url('../imgs/search.svg') no-repeat center / cover;
+  }
+}

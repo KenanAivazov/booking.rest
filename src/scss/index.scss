@@ -1,0 +1,24 @@
+// Utils
+@import "components/utils/content-loader";
+@import "components/utils/animation";
+@import "components/utils/stole-template";
+// Global styles
+@import "components/global";
+// freqs
+@import "components/freq/mini-info";
+@import "components/freq/checkbox";
+@import "components/freq/search";
+@import "components/freq/modal";
+@import "components/freq/modal-dish";
+// pages
+@import "components/pages/events";
+@import "components/pages/filters";
+@import "components/pages/list-item";
+@import "components/pages/rest-page";
+// rest-pages
+@import "components/pages/rest-pages/table-layouts";
+@import "components/pages/rest-pages/menu";
+
+
+// Media rules
+@import "components/utils/media";

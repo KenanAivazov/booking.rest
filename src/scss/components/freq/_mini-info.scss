@@ -1,0 +1,104 @@
+.g-mini-info {
+  width: calc(100% - 30px);
+  background: #fff;
+  border-radius: 5px;
+  padding: 15px 20px;
+  position: absolute;
+  bottom: 20px;
+  transform: translateY(130%);
+  z-index: 6;
+  display: flex;
+  left: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+  &__close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: -20px;
+    right: 0;
+    span {
+      position: absolute;
+      width: 15px;
+      height: 2px;
+      background: #000;
+      &:nth-of-type(1) {
+        transform: rotate(45deg);
+      }
+      &:nth-of-type(2) {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  &__head, &__body {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__head {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__icon {
+    width: 15px;
+    height: 15px;
+    margin-right: 7px;
+    &_star {
+      background: url('../imgs/star.svg') no-repeat center / contain;
+      // #dddddd
+    }
+    &_goTo {
+      background: url('../imgs/compass.svg') no-repeat top / cover;
+    }
+    &_time {
+      background: url('../imgs/clock.svg') no-repeat center / contain;
+    }
+  }
+  &__body {
+    width: 100%;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    a {
+      font-size: 16px;
+      color: #49bda3;
+    }
+    span {
+      font-size: 14px;
+      color: rgba(0,0,0,0.6);
+    }
+  }
+  &__left {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      &:nth-of-type(1) {
+        font-size: 16px;
+      }
+      &:nth-of-type(2) {
+        color: rgba(0,0,0,.4);
+      }
+    }
+  }
+}
