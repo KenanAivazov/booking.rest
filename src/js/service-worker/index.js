@@ -1,40 +1,15 @@
-const CACHE = 'network-or-cache-v1';
-const timeout = 400;
 
-
-// при событии fetch, мы и делаем запрос, но используем кэш, только после истечения timeout.
 self.addEventListener('fetch', (event) => {
-  event.respondWith(fromNetwork(event.request, timeout)
-    .catch((err) => {
-      console.log(`Error: ${err.message()}`);
-      return fromCache(event.request);
-    }));
+  alert('Качаю')
+  alert( event)
 });
 
 self.addEventListener('activate', (event) => {
-  // `self.clients.claim()` позволяет SW начать перехватывать запросы с самого начала,
-  // это работает вместе с `skipWaiting()`, позволяя использовать `fallback` с самых первых запросов.
-  event.waitUntil(self.clients.claim());
-
+  alert('Активен')
+  alert( event)
 });
 
-// Временно-ограниченный запрос.
-function fromNetwork(request, timeout) {
-  return new Promise((fulfill, reject) => {
-    var timeoutId = setTimeout(reject, timeout);
-    fetch(request).then((response) => {
-      clearTimeout(timeoutId);
-      fulfill(response);
-    }, reject);
-  });
-}
-
-function fromCache(request) {
-// Открываем наше хранилище кэша (CacheStorage API), выполняем поиск запрошенного ресурса.
-// Обратите внимание, что в случае отсутствия соответствия значения Promise выполнится успешно, но со значением `undefined`
-  return caches.open(CACHE).then((cache) =>
-    cache.match(request).then((matching) =>
-      matching || Promise.reject('no-match')
-    ));
-}
-
+self.addEventListener('update', (event) => {
+  alert('Активен')
+  alert( event)
+});

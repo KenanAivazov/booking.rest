@@ -319,6 +319,8 @@ textarea {
   width: 100%;
   position: absolute;
   &__content, &__wrapper {
+    position: relative;
+    z-index: 2;
     padding: 0 15px;
   }
   &__head-wrapper {

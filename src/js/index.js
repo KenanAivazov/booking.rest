@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import router from './routes/route'
 import store from './store/index'
-import './service-worker/index'
 
 
 
