@@ -1,7 +1,6 @@
 <script>
   import Loader from './components/global/Loader.vue'
   import Modal from './components/global/Modal.vue'
-  import ModalDish from './components/global/ModalMenuItem.vue'
   import { mapMutations } from 'vuex';
   export default {
     data: () => ({
@@ -10,16 +9,12 @@
     }),
     components: {
       Loader,
-      'v-modal': Modal,
-      ModalDish
+      'v-modal': Modal
     },
     computed: {
       active() {
         return this.$store.state.modal.active
       },
-      activeDish() {
-        return this.$store.state.modalDish.active
-      }
     },
     watch: {
     },
@@ -170,16 +165,15 @@
   };
 </script>
 <template>
-  <main>
+  <div class="g-wrapper">
     <transition name="fade-clear" mode="out-in">
       <v-modal v-if="active" />
     </transition>
-    <transition name="fade-clear" mode="out-in">
-      <modal-dish v-if="activeDish" />
-    </transition>
-    <transition name="fade-clear" mode="out-in">
-      <router-view :key="$route.params.id"/>
-    </transition>
+    <main>
+      <transition name="fade-clear" mode="out-in">
+        <router-view :key="$route.params.id"/>
+      </transition>
+    </main>
     <loader />
-  </main>
+  </div>
 </template>

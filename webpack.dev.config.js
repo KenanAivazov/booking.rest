@@ -80,6 +80,10 @@ module.exports = {
           limit: 10000,
         },
       },
+      {
+        test: /\.html$/,
+        loader: 'vue-template-loader'
+      }
     ]
   },
   plugins: [
@@ -117,6 +121,7 @@ module.exports = {
   resolve: {
     alias: {
       vue: 'vue/dist/vue.js',
+      '@': path.resolve(__dirname, './src/imgs/')
     }
   },
   node: {

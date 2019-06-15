@@ -1,45 +1,56 @@
 <template>
   <section class="g-menu">
     <div class="g-menu__head">
-      <div class="g-search">
+      <form class="g-search">
         <button></button>
         <label>
           <input type="text" placeholder="Что вы ищете?" v-model="search">
         </label>
-      </div>
+      </form>
     </div>
     <div class="g-menu-body" @click="closeSet">
       <transition name="fade-clear" mode="out-in">
         <div v-if="isLoad">
           <div class="g-menu-body__wrapper" v-for="(m, index) in menu" :key="`loader_${index}`">
             <div class="g-content-loader__row">
-              <div class="g-content-loader__row-item g-content-loader__row-item_short"></div>
               <div class="g-content-loader__row-item"></div>
             </div>
             <div class="g-menu-body__items">
               <div class="g-menu-body__item" v-for="( item, index ) in m.items" :key="`item-loader_${index}`">
                 <div class="g-content-loader__row-img"></div>
-                <div class="g-content-loader__row-item"></div>
+               <div class="g-content-loader__row">
+                 <div class="g-content-loader__row-item"></div>
+                 <div class="g-content-loader__row-item"></div>
+               </div>
               </div>
             </div>
           </div>
         </div>
       </transition>
-      <transition name="fade-clear" mode="out-in">
+      <transition name="fade-clear" mode="in-out">
         <div v-if="!isLoad">
           <div class="g-menu-body__wrapper" v-for="(m, index) in menu" :key="`menu_${index}`">
             <h2>{{ m.name }}</h2>
             <div class="g-menu-body__items" ref="items">
               <div class="g-menu-body__item" v-for="( item, index ) in m.items" :key="`item_${index}`" @click="openDishModal(item)">
-                <div class="g-menu-body__photo"></div>
-                <p>Название блюда</p>
+                <img src="@/menu/1.png" class="g-menu-body__photo" :alt="item.name">
+                <div class="g-menu-body__content">
+                  <p>{{ item.name }}</p>
+                  <p>
+                    {{ item.text }}
+                  </p>
+                </div>
+                <div class="g-menu-body__price">
+                  <p>{{ item.price }} ₽</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
       </transition>
     </div>
+    <!-- small menu -->
+    <!--
     <transition name="fade-clear" mode="out-in">
       <div class="g-menu-settings" v-show="settings" @click="openSettings">
         <transition name="fade-clear" mode="out-in">
@@ -58,6 +69,7 @@
         </transition>
       </div>
     </transition>
+    -->
   </section>
 </template>
 
@@ -72,7 +84,6 @@
       settings: false,
       isLoad: true,
       setIcon: true,
-
       filterItems: [
         {
           name: 'Хол. закуски',
@@ -173,28 +184,38 @@
           name: 'Холодные закуски',
           items: [
             {
-              name: 'Название блюда',
-              composition: [''],
-              price: 0
+              name: 'Суп из курицы',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam deleniti dolore, ducimus eum harum, ipsa ipsum maiores mollitia quia repellendus repudiandae, saepe. Aspernatur blanditiis est ipsam perspiciatis tenetur vero voluptate.',
+              composition: ['курица', 'петрушка', 'укроп', 'зелёный лук', 'куринный бульон'],
+              image: '1.png',
+              price: '250'
             },
             {
-              name: 'Название блюда',
-              composition: [''],
-              price: 0
+              name: 'Суп из курицы',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam deleniti dolore, ducimus eum harum, ipsa ipsum maiores mollitia quia repellendus repudiandae, saepe. Aspernatur blanditiis est ipsam perspiciatis tenetur vero voluptate.',
+              composition: ['курица', 'петрушка', 'укроп', 'зелёный лук', 'куринный бульон'],
+              image: '1.png',
+              price: '129'
             },
             {
-              name: 'Название блюда',
-              composition: [''],
-              price: 0
+              name: 'Суп из курицы',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam deleniti dolore, ducimus eum harum, ipsa ipsum maiores mollitia quia repellendus repudiandae, saepe. Aspernatur blanditiis est ipsam perspiciatis tenetur vero voluptate.',
+              composition: ['курица', 'петрушка', 'укроп', 'зелёный лук', 'куринный бульон'],
+              image: '1.png',
+              price: '1241'
             },
             {
-              name: 'Название блюда',
-              composition: [''],
-              price: 0
+              name: 'Суп из курицы',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam deleniti dolore, ducimus eum harum, ipsa ipsum maiores mollitia quia repellendus repudiandae, saepe. Aspernatur blanditiis est ipsam perspiciatis tenetur vero voluptate.',
+              composition: ['курица', 'петрушка', 'укроп', 'зелёный лук', 'куринный бульон'],
+              image: '1.png',
+              price: '15 234'
             },
             {
-              name: 'Название блюда',
-              composition: [''],
+              name: 'Суп из курицы',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam deleniti dolore, ducimus eum harum, ipsa ipsum maiores mollitia quia repellendus repudiandae, saepe. Aspernatur blanditiis est ipsam perspiciatis tenetur vero voluptate.',
+              composition: ['курица', 'петрушка', 'укроп', 'зелёный лук', 'куринный бульон'],
+              image: '1.png',
               price: 0
             },
 
@@ -672,16 +693,14 @@
     }),
     methods: {
       openDishModal(item) {
-        this.$store.commit('SET_MODAL_DISH', {
-          active: true,
-          infoItem: item
-        })
+        // TODO: при клике на item открываем новую страницу с блюдом
       },
       clickSettingsItem(name) {
         console.log(name);
         this.closeSet()
       },
       closeSet() {
+        let that = this;
         setTimeout(() => {
           TweenLite.to('.g-menu-settings', .3, {
             ease: Expo.easeOut,
@@ -691,7 +710,7 @@
             width: '50px',
             height: '50px',
             onComplete() {
-
+              that.setIcon = true
             }
           })
         }, 300);
@@ -724,7 +743,6 @@
       setTimeout(() => {
         this.isLoad = false;
       }, 2000);
-      console.log(this.$refs)
     },
     destroyed() {
     }

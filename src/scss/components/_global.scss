@@ -91,6 +91,9 @@ textarea {
   }
 }
 .g {
+  &-wrapper {
+    height: 100%;
+  }
   &-hide-input {
     width: 0 !important;
     height: 0;

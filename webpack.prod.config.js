@@ -44,7 +44,8 @@ module.exports = {
   },
   mode: 'production',
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.vue$/,
         exclude: /node_modules/,
         loader: 'vue-loader'
@@ -87,11 +88,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'css/main.css'
     }),
-    new webpack.HashedModuleIdsPlugin({
-      hashFunction: 'md4',
-      hashDigest: 'base64',
-      hashDigestLength: 4,
-    }),
+
     new VueLoaderPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
@@ -128,7 +125,6 @@ module.exports = {
           'index.html',
           'dist/**/**.*'
         ],
-
         navigateFallback: PUBLIC_PATH + '/',
         staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
       }

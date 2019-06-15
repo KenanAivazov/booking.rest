@@ -28,11 +28,14 @@
     }
   }
   &__line {
-    width: 120px;
-    height: 4px;
+    width: 50px;
+    height: 6px;
     border-radius: 100px;
     background: darken(#f6f7f8, 20%);
-    margin: 0 auto;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
   }
   &_black {
     background: rgba(0,0,0,0.5);

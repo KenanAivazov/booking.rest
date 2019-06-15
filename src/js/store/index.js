@@ -18,13 +18,6 @@ export default new Vuex.Store({
       isFalse: () => {},
       isCloseFunc: () => {},
     },
-    modalDish: {
-      active: false,
-      infoItem: {},
-      status: '',
-      isTrue: () => {},
-      isFalse: () => {}
-    },
     places: [],
     miniInfo: false,
     restClick: false,
@@ -40,9 +33,6 @@ export default new Vuex.Store({
         state.modal.isCloseFunc = data.isCloseFunc
       }
       state.modal = data;
-    },
-    SET_MODAL_DISH(state, data) {
-      state.modalDish = data;
     },
     SET_PLACES(state, place) {
       state.places = place
