@@ -33,7 +33,7 @@
             <h2>{{ m.name }}</h2>
             <div class="g-menu-body__items" ref="items">
               <div class="g-menu-body__item" v-for="( item, index ) in m.items" :key="`item_${index}`" @click="openDishModal(item)">
-                <img src="@/menu/1.png" class="g-menu-body__photo" :alt="item.name">
+                <img :src="item.image" class="g-menu-body__photo" :alt="item.name">
                 <div class="g-menu-body__content">
                   <p>{{ item.name }}</p>
                   <p>
