@@ -16,8 +16,7 @@ module.exports = {
   },
   devServer: {
     compress: true,
-    historyApiFallback: true,
-    https: true
+    historyApiFallback: true
   },
   optimization: {
     minimizer: [new TerserJSPlugin({})],

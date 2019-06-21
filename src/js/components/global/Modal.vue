@@ -44,7 +44,7 @@
     methods: {
       validInputs() {
         this.step++;
-        let terDate = this.modal.modalPickDate ? `${this.modal.modalPickDate} ${this.date}` : dayjs(this.date).locale('ru').format('DD MMM HH:mm');
+        let terDate = this.modal.pickDate ? `${this.modal.pickDate} ${this.date}` : dayjs(this.date).locale('ru').format('DD MMM HH:mm');
         this.data = {
           date: terDate,
           people: this.howMuchPeople,
@@ -56,16 +56,11 @@
 
       },
       sendStole() {
-
-
-        const socket = io.connect('ws://api-back.glitch.me');
-
-        socket.emit('booking', data);
-
+        const socket = io.connect('ws://carkrom.ru:1450/');
+        socket.emit('booking', this.data);
         socket.on('connect_error', err => {
           alert(`Произошла ошибка ${err}`)
         });
-
         socket.on('connect_timeout', err => {
           alert(`Время запроса истекло: ${err}`)
         });

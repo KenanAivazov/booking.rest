@@ -448,7 +448,6 @@
         this.$refs.carousel.advancePage(2)
       },
       openModal(i, item) {
-        console.log(this.normalDate);
         let chairs = ( item.chairs * 2 ) + +item.isLeftChair + +item.isRightChair;
         this.openModalBlur = !this.openModalBlur;
         this.sits1[i].selected = !this.sits1[i].selected;

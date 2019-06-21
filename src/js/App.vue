@@ -25,7 +25,8 @@
         miniInfoObject: 'SET_OBJECT_MINI_INFO',
         restClick: 'SET_REST_CLICK',
         setMap: 'SET_MAP',
-        createModal: 'SET_MODAL'
+        createModal: 'SET_MODAL',
+        setBg: 'SET_MINI_INFO_BG'
       }),
       mapInfo(lat = 51.685456, long = 39.1994535) {
         let map;
@@ -77,13 +78,14 @@
           });
           // берём данные
           google.maps.event.addListener(marker, 'click', e => {
-            console.log(place);
             that.miniInfo(true);
             that.restClick(false);
             that.miniInfoObject(place);
+            that.setBg(true);
+            console.log(that.$store.state.miniInfoBackground, 'bg');
             setTimeout(() => {
               this.animMiniInfo = TweenLite.to('.g-mini-info', .6, {
-                y: -60,
+                y: -20,
                 ease: Expo.easeInOut
               });
             }, 100);
@@ -161,6 +163,8 @@
     },
     created() {
 
+    },
+    mounted() {
     }
   };
 </script>

@@ -91,6 +91,27 @@ textarea {
   }
 }
 .g {
+  &-shadow {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 56;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      opacity: 0.5;
+      text-align: center;
+      margin: 0;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 50px;
+    }
+  }
   &-wrapper {
     height: 100%;
   }
@@ -117,7 +138,7 @@ textarea {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 555;
+      z-index: 55;
       box-shadow: 0 5px 20px rgba(0,0,0, .3);
 
       background: #fff;
@@ -283,7 +304,7 @@ textarea {
       width: 100%;
       border-top-right-radius: 20px;
       border-top-left-radius: 20px;
-      transform: translateY(calc(100% - 130px));
+      transform: translateY(30px);
       transition: transform .3s ease;
       &_open {
         transform: translateY(-60px);

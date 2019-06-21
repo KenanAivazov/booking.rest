@@ -1,5 +1,4 @@
 .g-list {
-  margin-bottom: 50px;
   &-type {
     top: -12.8px;
     left: 15px;
@@ -19,10 +18,11 @@
   }
   &__wrapper {
     margin-top: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 100px;
     position: relative;
     .g-content-loader {
       width: calc(100% - 30px);
+      margin-bottom: 100px;
       left: 15px;
       right: 15px;
       position: absolute;

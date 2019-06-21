@@ -122,11 +122,12 @@
         })
       },
       goToPage(obj) {
+        console.log(obj);
         localStorage.setItem('place', JSON.stringify(obj));
         this.$router.push({
           name: 'RestPage',
           params: {
-            id: obj.id
+            id: obj.place_id
           }
         })
       }

@@ -4,7 +4,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     contentLoaderList: true,
-
     modal: {
       active: false,
       head: '',
@@ -20,6 +19,7 @@ export default new Vuex.Store({
     },
     places: [],
     miniInfo: false,
+    miniInfoBackground: false,
     restClick: false,
     miniInfoObject: {}
   },
@@ -33,6 +33,9 @@ export default new Vuex.Store({
         state.modal.isCloseFunc = data.isCloseFunc
       }
       state.modal = data;
+    },
+    SET_MINI_INFO_BG(state, status) {
+      state.miniInfoBackground = status
     },
     SET_PLACES(state, place) {
       state.places = place

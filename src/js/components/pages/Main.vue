@@ -12,7 +12,7 @@
       party: false,
       step: 1,
       mapConst: '',
-
+      miniInfoBg: false
     }),
     beforeRouteEnter(to, from, next) {
       next(vm => {
@@ -24,14 +24,18 @@
     },
     watch: {
       step(newVal) {
-
+        let that = this;
         if ( newVal !== 3 )  {
+
           this.$refs.main.style.overflowY = 'scroll';
           this.$refs.main.style.overflowX = 'hidden';
           TweenLite.to('.g-mini-info', .6, {
             y: '130%',
             ease: Expo.easeInOut,
-
+            onComplete: () => {
+              this.$store.commit('SET_MINI_INFO', false);
+              console.log(this.miniInfo)
+            }
           });
 
         } else if (newVal === 3) {
@@ -51,6 +55,7 @@
       ...mapState([
         'places',
         'miniInfo',
+        'miniInfoBackground',
         'miniInfoObject'
       ])
     },
@@ -66,17 +71,25 @@
           body: 'taxi'
         })
       },
-
+      closeMiniInfo() {
+        this.$store.commit('SET_MINI_INFO_BG', false);
+        TweenLite.to('.g-mini-info', .6, {
+          y: '130%',
+          ease: Expo.easeInOut,
+          onComplete: () => {
+            this.$store.commit('SET_MINI_INFO', false);
+            console.log(this.miniInfo)
+          }
+        });
+      },
       goToPage(obj) {
         this.step = 1;
         this.$store.commit('SET_MINI_INFO', false);
-        console.log(this.miniInfo);
-        console.log('хуй');
         localStorage.setItem('place', JSON.stringify(obj));
         this.$router.push({
           name: 'RestPage',
           params: {
-            id: obj.id
+            id: obj.place_id
           }
         })
       }
@@ -89,13 +102,22 @@
       Events
     },
     mounted() {
-
     }
   };
 </script>
 
 <template>
   <section class="g-main" ref="main">
+
+    <!-- shadow bg for mini info -->
+    <transition name="fade-clear">
+      <div class="g-shadow" @click="closeMiniInfo" v-if="miniInfoBackground">
+        <p>
+          Закрыть
+        </p>
+      </div>
+    </transition>
+
     <!-- Mini info -->
     <div class="g-mini-info" v-if="miniInfo">
       <div class="g-mini-info__wrapper">
@@ -144,6 +166,8 @@
     <transition name="fade" mode="out-in">
       <list-item :list-items="places" v-if="step == 1" />
     </transition>
+
+
     <!-- Фильтры -->
     <transition name="fade" mode="out-in">
       <filters v-if="step == 2" />
@@ -156,7 +180,7 @@
       </div>
     </transition>
 
-    <!-- Заведения по близости -->
+    <!-- Заведения по близости
     <transition name="hide" mode="out-in">
       <div v-show="step == 3 && !miniInfo" :class="[ 'g-main__near', { 'g-main__near_open': nearRestaurants } ]">
         <div class="g-main__near-head">
@@ -192,13 +216,14 @@
         </div>
       </div>
     </transition>
+    -->
 
     <!-- Мероприятия -->
     <transition name="fade" mode="out-in">
       <events v-if="step == 4" />
     </transition>
 
-    <div class="g-main__switcher">
+    <div class="g-main__switcher" ref="mainSwitcher">
       <div :class="[ 'g-main__button-toggle', { 'g-main__button-toggle_active': step == 1 } ]" @click="step = 1">
         <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" viewBox="0 0 489.7 489.7"><path d="M52.7 134.8c29.1 0 52.7-23.7 52.7-52.7s-23.6-52.8-52.7-52.8S0 53 0 82 23.7 134.8 52.7 134.8zM52.7 53.8c15.6 0 28.2 12.7 28.2 28.2s-12.7 28.2-28.2 28.2 -28.2-12.7-28.2-28.2S37.2 53.8 52.7 53.8z"/><path d="M52.7 297.6c29.1 0 52.7-23.7 52.7-52.7s-23.6-52.7-52.7-52.7S0 215.8 0 244.9 23.7 297.6 52.7 297.6zM52.7 216.7c15.6 0 28.2 12.7 28.2 28.2s-12.7 28.2-28.2 28.2 -28.2-12.6-28.2-28.2S37.2 216.7 52.7 216.7z"/><path d="M52.7 460.5c29.1 0 52.7-23.7 52.7-52.7 0-29.1-23.7-52.7-52.7-52.7S0 378.8 0 407.8C0 436.8 23.7 460.5 52.7 460.5zM52.7 379.5c15.6 0 28.2 12.7 28.2 28.2 0 15.6-12.7 28.2-28.2 28.2s-28.2-12.7-28.2-28.2C24.5 392.2 37.2 379.5 52.7 379.5z"/><path d="M175.9 94.3h301.5c6.8 0 12.3-5.5 12.3-12.3s-5.5-12.3-12.3-12.3H175.9c-6.8 0-12.3 5.5-12.3 12.3S169.1 94.3 175.9 94.3z"/><path d="M175.9 257.2h301.5c6.8 0 12.3-5.5 12.3-12.3s-5.5-12.3-12.3-12.3H175.9c-6.8 0-12.3 5.5-12.3 12.3S169.1 257.2 175.9 257.2z"/><path d="M175.9 420h301.5c6.8 0 12.3-5.5 12.3-12.3s-5.5-12.3-12.3-12.3H175.9c-6.8 0-12.3 5.5-12.3 12.3S169.1 420 175.9 420z"/></svg>
         <span>
